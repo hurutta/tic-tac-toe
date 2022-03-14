@@ -10,8 +10,7 @@ public class RestServiceCorsApplication {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/").allowedOrigins("http://localhost:3000/");
-                // registry.addMapping("/remove/{name}").allowedOrigins("https://pass-word-saver.herokuapp.com");
+                registry.addMapping("/").allowedOrigins("https://tictactoe-jawad.herokuapp.com/");
             }
         };
     }
