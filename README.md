@@ -72,13 +72,62 @@ At level 2, tweaking the standard rules actually decreases the likelihood of a d
   *  <details><summary>
 	  <b>Backend</b><br>  
       </summary>
-	    abced
-      </details>
+
+      ```
+      .
+      ├── src/
+      │   ├── main/
+      │   │   ├── java/com/example/tictactoe/
+      │   │   │   ├── config/
+      │   │   │   │   ├── MongoDbConfig.java
+      │   │   │   │   └── SwaggerConfig.java
+      │   │   │   ├── controller/
+      │   │   │   │   └── GameController.java
+      │   │   │   ├── exception/
+      │   │   │   │   ├── ExceptionPayload.java
+      │   │   │   │   ├── GameExceptionHandler.java
+      │   │   │   │   └── QueryException.java
+      │   │   │   ├── model/
+      │   │   │   │   ├── Board.java
+      │   │   │   │   ├── Game.java
+      │   │   │   │   ├── GameStatus.java
+      │   │   │   │   ├── Move.java
+      │   │   │   │   ├── PlayerType.java
+      │   │   │   │   └── Query.java
+      │   │   │   ├── repository/
+      │   │   │   │   └── GameRepository.java
+      │   │   │   ├── service/
+      │   │   │   │   ├── GameService.java
+      │   │   │   │   ├── GameServiceImpl.java
+      │   │   │   │   └── VerdictService.java
+      │   │   │   ├── RestServiceCorsApplication.java
+      │   │   │   └── TicTacToeApplication.java
+      │   │   └── resources/
+      │   │       └── application.properties
+      │   └── test/java/com/example/tictactoe/
+      │       ├── GameUserServiceTest.java
+      │       └── TicTacToeApplicationTests.java 
+      └── pom.xml
+
+      ```
+
+    </details>
 
   *  <details><summary>
 	  <b>Frontend</b><br>  
       </summary>
-	    abced
+	    
+      ```
+      .
+      ├── Procfile
+      ├── public/
+      │   ├── index.html
+      │   ├── main.js
+      │   └── main.css
+      ├── server.js
+      └── package.json
+      ```
+
       </details>
 
 
