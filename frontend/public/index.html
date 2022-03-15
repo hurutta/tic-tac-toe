@@ -11,23 +11,21 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Mina:wght@700&family=Press+Start+2P&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="https://unpkg.com/notie/dist/notie.min.css">
+<link rel="stylesheet" type="text/css" href="https://unpkg.com/notie/dist/notie.min.css">
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-
 <style>
 body {font-family: "Lato", sans-serif}
 .mySlides {display: none}
-
-
 </style>
-
-
 <link rel="stylesheet" href="main.css">
+
+
+
 
 
 <body>
 
-    <!-- Navbar -->
+    <!-- navigation bar -->
     <div class="w3-top">
     <div class="w3-bar w3-black w3-card">
         
@@ -43,12 +41,14 @@ body {font-family: "Lato", sans-serif}
     </div>
 
 
-    <!-- Page content -->
     <div class="w3-content" style="max-width:2000px;">
 
     <!---------------------------------------------------------------------------------------------------->    
     <!---------------------------------------------------------------------------------------------------->    
     <!---------------------------------------------------------------------------------------------------->    
+
+
+
     <!--        SETUP       -->
     <div class="w3-content w3-center w3-padding-64" style="max-width:100%;height:800px;" id="setup">
         <h1>TIC TAC TOE</h1>
@@ -94,7 +94,9 @@ body {font-family: "Lato", sans-serif}
 
 
 
-    <!-- The Band Section -->
+
+
+    <!-- Game section -->
     <div class="w3-content w3-center w3-padding-64" style="max-width:100%;" id="game">
         <h1 id="game_status">Game Start</h1>
         
@@ -104,7 +106,6 @@ body {font-family: "Lato", sans-serif}
             <div class="game">
             <div id="result"></div>
 
-				<!--<div class="status">Next Turn : Player : <div id="status">X</span></div>-->
 				<div id="board"></div>
 			             
 
@@ -118,6 +119,7 @@ body {font-family: "Lato", sans-serif}
                 </div>
             </div>
     </div>
+
 
 
 
@@ -149,31 +151,8 @@ body {font-family: "Lato", sans-serif}
 
 
 
-
-
-    <!-- Ticket Modal -->
-    <div id="ticketModal" class="w3-modal">
-        <div class="w3-modal-content w3-animate-top w3-card-4">
-        <header class="w3-container w3-teal w3-center w3-padding-32"> 
-            <span onclick="document.getElementById('ticketModal').style.display='none'" 
-        class="w3-button w3-teal w3-xlarge w3-display-topright">×</span>
-            <h2 class="w3-wide"><i class="fa fa-suitcase w3-margin-right"></i>Tickets</h2>
-        </header>
-        <div class="w3-container">
-            <p><label><i class="fa fa-shopping-cart"></i> Tickets, $15 per person</label></p>
-            <input class="w3-input w3-border" type="text" placeholder="How many?">
-            <p><label><i class="fa fa-user"></i> Send To</label></p>
-            <input class="w3-input w3-border" type="text" placeholder="Enter email">
-            <button class="w3-button w3-block w3-teal w3-padding-16 w3-section w3-right">PAY <i class="fa fa-check"></i></button>
-            <button class="w3-button w3-red w3-section" onclick="document.getElementById('ticketModal').style.display='none'">Close <i class="fa fa-remove"></i></button>
-            <p class="w3-right">Need <a href="#" class="w3-text-blue">help?</a></p>
-        </div>
-        </div>
-    </div>
-
    
     
-    <!-- End Page Content -->
     </div>
 
    

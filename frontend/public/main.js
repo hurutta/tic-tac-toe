@@ -2,70 +2,68 @@ var squares = Array(25).fill('');
 var nxn_=5;
 var body = { nxn: nxn_, moves: [] };
 
-//Squares Html variable
 var squareHtml  = '<div className="board-row">';
 var xIsNext = true;
 var winner  = false;
-// Render squares
-for(let i=0; i<squares.length;i++){
-  if(i % 5 === 0 && i > 0){
-    squareHtml += '</div><div className="board-row">';
-    squareHtml += buildSquare(i,squares.length);
-  }else{
-    squareHtml += buildSquare(i,squares.length);
-  }
-}
-squareHtml += '</div>';
-document.getElementById('board').innerHTML = squareHtml;
-/*
- * Render square 
- * @param int
- */ 
-function buildSquare(j,nxn){
-  var ret;
-  if(nxn === 9) ret = '<button class="square3" onClick="handleClick('+j+')" id="sq_'+j+'">'+squares[j]+'</button>';
-  if(nxn === 16) ret = '<button class="square4" onClick="handleClick('+j+')" id="sq_'+j+'">'+squares[j]+'</button>';
-  if(nxn === 25) ret = '<button class="square5" onClick="handleClick('+j+')" id="sq_'+j+'">'+squares[j]+'</button>';
-  if(nxn === 36) ret = '<button class="square6" onClick="handleClick('+j+')" id="sq_'+j+'">'+squares[j]+'</button>';
-  if(nxn === 49) ret = '<button class="square7" onClick="handleClick('+j+')" id="sq_'+j+'">'+squares[j]+'</button>';
-  if(nxn === 64) ret = '<button class="square8" onClick="handleClick('+j+')" id="sq_'+j+'">'+squares[j]+'</button>';
-  if(nxn === 81) ret = '<button class="square9" onClick="handleClick('+j+')" id="sq_'+j+'">'+squares[j]+'</button>';
-  if(nxn === 100) ret = '<button class="square10" onClick="handleClick('+j+')" id="sq_'+j+'">'+squares[j]+'</button>';
-  if(nxn === 121) ret = '<button class="square11" onClick="handleClick('+j+')" id="sq_'+j+'">'+squares[j]+'</button>';
-  if(nxn === 144) ret = '<button class="square12" onClick="handleClick('+j+')" id="sq_'+j+'">'+squares[j]+'</button>';
-  return ret;
+
+for(let i=0; i<squares.length;i++)
+{
+    if(i % nxn_ === 0 && i > 0)
+    {
+        squareHtml += '</div><div className="board-row">';
+        squareHtml += buildSquare(i,squares.length);
+    }else
+    {
+        squareHtml += buildSquare(i,squares.length);
+    }
 }
 
-/*
- * Square box click handler
- * @param int
- */
-function handleClick(index){
-  if(winner || squares[index]){
-    return ;
-  }
+squareHtml += '</div>';
+document.getElementById('board').innerHTML = squareHtml;
+
+function buildSquare(j,nxn)
+{
+    var ret;
+    if(nxn === 9) ret = '<button class="square3" onClick="handleClick('+j+')" id="sq_'+j+'">'+squares[j]+'</button>';
+    if(nxn === 16) ret = '<button class="square4" onClick="handleClick('+j+')" id="sq_'+j+'">'+squares[j]+'</button>';
+    if(nxn === 25) ret = '<button class="square5" onClick="handleClick('+j+')" id="sq_'+j+'">'+squares[j]+'</button>';
+    if(nxn === 36) ret = '<button class="square6" onClick="handleClick('+j+')" id="sq_'+j+'">'+squares[j]+'</button>';
+    if(nxn === 49) ret = '<button class="square7" onClick="handleClick('+j+')" id="sq_'+j+'">'+squares[j]+'</button>';
+    if(nxn === 64) ret = '<button class="square8" onClick="handleClick('+j+')" id="sq_'+j+'">'+squares[j]+'</button>';
+    if(nxn === 81) ret = '<button class="square9" onClick="handleClick('+j+')" id="sq_'+j+'">'+squares[j]+'</button>';
+    if(nxn === 100) ret = '<button class="square10" onClick="handleClick('+j+')" id="sq_'+j+'">'+squares[j]+'</button>';
+    if(nxn === 121) ret = '<button class="square11" onClick="handleClick('+j+')" id="sq_'+j+'">'+squares[j]+'</button>';
+    if(nxn === 144) ret = '<button class="square12" onClick="handleClick('+j+')" id="sq_'+j+'">'+squares[j]+'</button>';
+    return ret;
+}
+
+function handleClick(index)
+{
+    if(winner || squares[index])
+    {
+        return ;
+    }
 
 
     document.getElementById("game_status").innerHTML = "Game In Progress";
 
 
   
-  squares[index] = xIsNext ? 'X' : 'O';
-  
-  var xx = Math.floor(index / nxn_);
-  var yy = index - (xx*nxn_);
-  var player = "CIRCLE";
-  if(xIsNext) player = "CROSS";
-  var move = { playerType: player,coOrdinateX: xx, coOrdinateY: yy };
-  body.moves.push(move);
+    squares[index] = xIsNext ? 'X' : 'O';
+
+    var xx = Math.floor(index / nxn_);
+    var yy = index - (xx*nxn_);
+    var player = "CIRCLE";
+    if(xIsNext) player = "CROSS";
+    var move = { playerType: player,coOrdinateX: xx, coOrdinateY: yy };
+    body.moves.push(move);
 
 
-  const sqs = squares.slice();
-  var elementId = "sq_"+index;
-  document.getElementById(elementId).innerHTML = xIsNext ? '<span style="color: red">X</span>' : '<span style="color: blue">O</span>';
-  xIsNext = xIsNext ? false : true;
-  console.log(squares);
-  //calculateWinner(sqs);
+    const sqs = squares.slice();
+    var elementId = "sq_"+index;
+    document.getElementById(elementId).innerHTML = xIsNext ? '<span style="color: red">X</span>' : '<span style="color: blue">O</span>';
+    xIsNext = xIsNext ? false : true;
+    console.log(squares);
 }
 
 
@@ -93,29 +91,21 @@ function play(nxn)
 
     squareHtml  = '<div className="board-row">';
 
-  // Render squares
-  for(let i=0; i<squares.length;i++){
-    if(i % nxn === 0 && i > 0){
-      squareHtml += '</div><div className="board-row">';
-      squareHtml += buildSquare(i,squares.length);
-    }else{
-      squareHtml += buildSquare(i,squares.length);
+    for(let i=0; i<squares.length;i++)
+    {
+        if(i % nxn === 0 && i > 0){
+            squareHtml += '</div><div className="board-row">';
+            squareHtml += buildSquare(i,squares.length);
+        }else
+        {
+            squareHtml += buildSquare(i,squares.length);
+        }
     }
-  }
-  squareHtml += '</div>';
-  document.getElementById('board').innerHTML = squareHtml;
-  toggleSide();
+    squareHtml += '</div>';
+    document.getElementById('board').innerHTML = squareHtml;
+    toggleSide();
 }
 
-function myFunction2()
-{
-    let uri = 'http://localhost:8080/newgame/4';
-
-    //var query = {username: usrname, password: hash, userData: [{ websiteUrl: "Demo website" , websitePassword: "DemoPassword" }] };
-    this.axios.post(uri).then(response => 
-    console.log(response.data)); //alert("Account Created, Login to access")
-    console.log(123);
-}
 
 
 function toggleSide()
@@ -142,7 +132,7 @@ function toggleSide()
 
 function note(msj)
 {
-        notie.alert({ text: msj });
+    notie.alert({ text: msj });
 }
 
 
@@ -150,20 +140,21 @@ function note(msj)
 
 
 
-////////////////////
 let tableHead = [
   { No: "", Winner: "", Board: "", NoOfMoves: "" }];
 
 
-function generateTableHead(table, data) {
-  let thead = table.createTHead();
-  let row = thead.insertRow();
-  for (let key of data) {
-    let th = document.createElement("th");
-    let text = document.createTextNode(key);
-    th.appendChild(text);
-    row.appendChild(th);
-  }
+function generateTableHead(table, data) 
+{
+    let thead = table.createTHead();
+    let row = thead.insertRow();
+    for (let key of data) 
+    {
+        let th = document.createElement("th");
+        let text = document.createTextNode(key);
+        th.appendChild(text);
+        row.appendChild(th);
+    }
 }
 
 function generateTable(table, data) 
@@ -173,28 +164,28 @@ function generateTable(table, data)
         let row = table.insertRow();
 
 
-      let cell = row.insertCell();
-      let text = document.createTextNode(i+1);
-      cell.appendChild(text);
-      
-      cell = row.insertCell();
-      text = document.createTextNode(data[i].winner);
-      cell.appendChild(text);
-      
-      cell = row.insertCell();
-      text = document.createTextNode(data[i].board.nxn+" x "+data[i].board.nxn);
-      cell.appendChild(text);
+        let cell = row.insertCell();
+        let text = document.createTextNode(i+1);
+        cell.appendChild(text);
 
-      cell = row.insertCell();
-      text = document.createTextNode(data[i].totalMove);
-      cell.appendChild(text);
+        cell = row.insertCell();
+        text = document.createTextNode(data[i].winner);
+        cell.appendChild(text);
+
+        cell = row.insertCell();
+        text = document.createTextNode(data[i].board.nxn+" x "+data[i].board.nxn);
+        cell.appendChild(text);
+
+        cell = row.insertCell();
+        text = document.createTextNode(data[i].totalMove);
+        cell.appendChild(text);
     }
 }
 
 
 function dataFetch()
 {
-    let uri = 'http://localhost:8080/history';
+    let uri = 'https://tictac-toe-backend.herokuapp.com/history';
 
     this.axios.get(uri).then(response =>{ 
     
@@ -205,7 +196,7 @@ function dataFetch()
     generateTableHead(table, data);
     generateTable(table, response.data);
     chart(response.data);
-    }); //alert("Account Created, Login to access")
+    }); 
 }
 
 dataFetch();
@@ -227,7 +218,7 @@ function validate()
     }
 
 
-    let uri = 'http://localhost:8080/validate';
+    let uri = 'https://tictac-toe-backend.herokuapp.com/validate';
     this.axios.post(uri,body).then(response =>{ 
     //console.log(response.data);
 
@@ -273,12 +264,11 @@ function cnfetti()
       }
 
       var particleCount = 50 * (timeLeft / duration);
-      // since particles fall down, start a bit higher than random
       confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } }));
       confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } }));
     }, 250);
 }
-///////////////////////////////
+//////////////////////////////////////////////////////////////
 function chart(data) 
 {
     var circle = 0;
@@ -312,11 +302,11 @@ function chart(data)
             {y: (circle/(cross+circle))*100.0, label: "CIRCLE"},
             {y: (cross/(cross+circle))*100.0, label: "CROSS"},
         ]
-    }]
-});
-chart.render();
+        }]
+    });
+    chart.render();
 
-chart = new CanvasJS.Chart("chartContainer2", {
+    chart = new CanvasJS.Chart("chartContainer2", {
     animationEnabled: true,
     title: {
         text: "Board ratio"
@@ -338,10 +328,8 @@ chart = new CanvasJS.Chart("chartContainer2", {
             {y: (array[11]/n)*100.0, label: "11 x 11"},
             {y: (array[12]/n)*100.0, label: "12 x 12"},
         ]
-    }]
-});
-chart.render();
+        }]
+    });
+    chart.render();
 }
 
-//match in progress
-//aws s3 image bucket 
