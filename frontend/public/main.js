@@ -37,6 +37,7 @@ function buildSquare(j,nxn)
     return ret;
 }
 
+
 function handleClick(index)
 {
     if(winner || squares[index])
@@ -130,6 +131,7 @@ function toggleSide()
     }
 }   
 
+
 function note(msj)
 {
     notie.alert({ text: msj });
@@ -156,6 +158,7 @@ function generateTableHead(table, data)
         row.appendChild(th);
     }
 }
+
 
 function generateTable(table, data) 
 {
@@ -245,7 +248,8 @@ function validate()
 
 }
 
-////////////////////////////////////////////////////////////////
+
+
 function cnfetti()
 {
     var duration = 2 * 1000;
@@ -268,7 +272,9 @@ function cnfetti()
       confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } }));
     }, 250);
 }
-//////////////////////////////////////////////////////////////
+
+
+
 function chart(data) 
 {
     var circle = 0;
