@@ -38,11 +38,11 @@ Its a full-stack tic-tac-toe application with Maven based **SpringBoot** backend
 
 ## About The Project
 
-In this project, I created a fullstack <b>N x N</b> Tic-tac-toe application where <i>3 ≤ <b>n</b> ≤ 12</i>. The frontend and backend are developed independently, where the frontend responsible for I/O and style and the backend responsible for functionality and logics. The backend is RESTful. The frontend makes API requests to the backend and receives payload. All the API shown <a href="#usage2">here</a> and in <a href="#features">swagger</a> integration part. Backend keeps all the sucessful validation result in the database, I've used mongoDB atlas microservice which is <a href="backend/src/main/java/com/example/tictactoe/config/MongoDbConfig.java">configured</a> from backend. Moreover, I added unit testing with Junit and Mockito. Later, I deployed it on heroku, as heroku dyno sleeps after inactivity of 30 minutes, it might take few more seconds on its first loading.
+In this project, I created a fullstack <b>N x N</b> Tic-tac-toe application where <i>3 ≤ <b>n</b> ≤ 12</i>. The frontend and backend are developed independently, where the frontend responsible for I/O and style and the backend responsible for functionality and logics. The backend is RESTful. The frontend makes API requests to the backend and receives payload. All the API shown <a href="#usage2">here</a> and in <a href="#features">swagger</a> integration part. Backend keeps all the sucessful validation result in the database, I've used mongoDB atlas microservice which is <a href="backend/src/main/java/com/example/tictactoe/config/MongoDbConfig.java">configured</a> from backend. Moreover, I added unit testing with Junit and Mockito. Later, I deployed it on heroku, as heroku dyno sleeps after inactivity of 30 minutes, it might take few more seconds on its first loading. The recommended screen resolution is 1366x768 (best fit) or higher (only for PC).
 
 <br>
 
-It is designed in such a way that two players can play tic-tac-toe from the same endpoint. There is a <b>validation</b> button that allows you to verify the verdict. When the validation button is pressed, the frontend sends a <b>POST</b> API request to the backend with all the commands of moves played up to that point in a single <b>chunk</b>. The backend serves results to the frontend. If the game ends in a tie or a win, the frontend will <b>stop</b> accepting input on the board for that particular game. If the game is not finished (further moves are required for determination), the player can still give his move on the board, and continue the game. During a game, players can ask for validation multiple times by pressing the validate button if the game is not finished.
+It is designed in such a way that two players can play tic-tac-toe from the same endpoint. There is a <b>validation</b> button that allows you to verify the verdict. When the validation button is pressed, the frontend sends a ``POST`` API request to the backend with all the commands of moves played up to that point in a single <b>chunk</b>. The backend serves results to the frontend. If the game ends in a tie or a win, the frontend will <b>stop</b> accepting input on the board for that particular game. If the game is not finished (further moves are required for determination), the player can still give his move on the board, and continue the game. During a game, players can ask for validation multiple times by pressing the validate button if the game is not finished.
 
 <br>
 
@@ -151,7 +151,7 @@ At level 2, tweaking the standard rules actually decreases the likelihood of a d
 <b>Dropdown</b> to see images of usage. 
 <details>
 <summary>
-	Validating any query, <b>POST</b> : <a href="https://tictac-toe-backend.herokuapp.com/validate">https://tictac-toe-backend.herokuapp.com/validate</a> <br>  
+	Validating any query, <code>POST</code> : <a href="https://tictac-toe-backend.herokuapp.com/validate">https://tictac-toe-backend.herokuapp.com/validate</a> <br>  
 	Sample JSON for this request: <b>🔻expand🔻</b>
 
 	{
@@ -174,7 +174,7 @@ At level 2, tweaking the standard rules actually decreases the likelihood of a d
 
 <details>
 <summary>
-	Getting all match details, <b>GET</b> : <a href="https://tictac-toe-backend.herokuapp.com/history">https://tictac-toe-backend.herokuapp.com/history </a><b>🔻expand🔻</b> <br> 
+	Getting all match details, <code>GET</code> : <a href="https://tictac-toe-backend.herokuapp.com/history">https://tictac-toe-backend.herokuapp.com/history </a><b>🔻expand🔻</b> <br> 
 
 </summary>
 	<img src="images/history.png">
@@ -229,7 +229,7 @@ At level 2, tweaking the standard rules actually decreases the likelihood of a d
 
 <details>
 <summary>
-	Swagger is integrated and can be access at : <a href="https://tictac-toe-backend.herokuapp.com/swagger-ui.html">https://tictac-toe-backend.herokuapp.com/swagger-ui.html</a><b>🔻expand🔻</b> <br>  
+	Swagger is integrated and can be access for interacting with API at : <a href="https://tictac-toe-backend.herokuapp.com/swagger-ui.html">https://tictac-toe-backend.herokuapp.com/swagger-ui.html</a><b>🔻expand🔻</b> <br>  
 		
 </summary>
 	<img src="images/swagger.png">
