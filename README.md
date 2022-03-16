@@ -38,7 +38,7 @@ Its a full-stack tic-tac-toe application with Maven based **SpringBoot** backend
 
 ## About The Project
 
-In this project, I created a fullstack project for <b>N x N</b> Tic-tac-toe application where <i>3 ≤ <b>n</b> ≤ 12</i>. The frontend and backend are developed independently, with the frontend responsible for I/O and style and the backend responsible for functionality and logics. The backend is RESTful. The frontend makes API requests to the backend and receives payload. All the API shown <a href="#usage2">here</a> and in <a href="#features">swagger</a> integration part. Backend keeps all the sucessful validation result in the database, I've used mongoDB atlas microservice which is <a href="backend/src/main/java/com/example/tictactoe/config/MongoDbConfig.java">configured</a> from backend. Later, I added unit testing with Junit and Mockito.
+In this project, I created a fullstack <b>N x N</b> Tic-tac-toe application where <i>3 ≤ <b>n</b> ≤ 12</i>. The frontend and backend are developed independently, where the frontend responsible for I/O and style and the backend responsible for functionality and logics. The backend is RESTful. The frontend makes API requests to the backend and receives payload. All the API shown <a href="#usage2">here</a> and in <a href="#features">swagger</a> integration part. Backend keeps all the sucessful validation result in the database, I've used mongoDB atlas microservice which is <a href="backend/src/main/java/com/example/tictactoe/config/MongoDbConfig.java">configured</a> from backend. Moreover, I added unit testing with Junit and Mockito. Later, I deployed it on heroku, as heroku dyno sleeps after inactivity of 30 minutes, it might take few more seconds on its first loading.
 
 <br>
 
