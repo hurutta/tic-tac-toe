@@ -8,9 +8,11 @@ import com.example.tictactoe.model.Board;
 import com.example.tictactoe.model.Game;
 import com.example.tictactoe.model.GameStatus;
 import com.example.tictactoe.model.Move;
+import com.example.tictactoe.model.PlayerImage;
 import com.example.tictactoe.model.PlayerType;
 import com.example.tictactoe.model.Query;
 import com.example.tictactoe.repository.GameRepository;
+import com.example.tictactoe.repository.PlayerRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,6 +22,9 @@ public class GameServiceImpl implements GameService
 {
     @Autowired
     public GameRepository gameRepository;
+
+    @Autowired
+    public PlayerRepository playerRepository;
 
     public GameServiceImpl(GameRepository gameRepository) 
     {
@@ -119,6 +124,18 @@ public class GameServiceImpl implements GameService
             player = now;
         }
         return true;
+    }
+
+    @Override
+    public void saveFileName(String fileName)
+    {
+        PlayerImage playerImage = new PlayerImage(fileName);
+        playerRepository.insert(playerImage);
+    }
+    @Override
+    public List<PlayerImage> getAllFileName()
+    {
+        return playerRepository.findAll();
     }
 
 }

@@ -65,6 +65,24 @@ function handleClick(index)
     document.getElementById(elementId).innerHTML = xIsNext ? '<span style="color: red">X</span>' : '<span style="color: blue">O</span>';
     xIsNext = xIsNext ? false : true;
     console.log(squares);
+
+
+    var player = "⭕";
+    if(xIsNext) player = "❌";
+    document.getElementById("move").innerHTML = "Current move "+player+" by ";
+    var image;
+    if(xIsNext)
+    {
+        image = document.getElementById('output');
+    }else
+    {
+        image = document.getElementById('output2');
+    }
+    const clone = image.cloneNode(true);
+    clone.width = 40;
+    document.getElementById('move2').innerHTML = "";
+    document.getElementById('move2').appendChild(clone);
+    
 }
 
 
@@ -72,8 +90,12 @@ function handleClick(index)
 
 function play(nxn) 
 {
-
+    var player = "⭕";
+    if(xIsNext) player = "❌";
     document.getElementById("game_status").innerHTML = "Game Start";
+    document.getElementById("move").innerHTML = "Current move "+player+" by ";
+
+
 
 
     if(nxn == null) nxn = nxn_;
@@ -188,7 +210,7 @@ function generateTable(table, data)
 
 function dataFetch()
 {
-    let uri = 'https://tictac-toe-backend.herokuapp.com/history';
+    let uri = 'http://localhost:8080/history';
 
     this.axios.get(uri).then(response =>{ 
     
@@ -199,6 +221,34 @@ function dataFetch()
     generateTableHead(table, data);
     generateTable(table, response.data);
     chart(response.data);
+    }); 
+
+
+    
+
+    uri = 'http://localhost:8080/playerImageList';
+    this.axios.get(uri).then(response =>{ 
+    
+    document.getElementById('playerImages').innerHTML = "Our Players  - ";
+
+    for(var i=0; i<response.data.length; i++)
+    {
+        uri = 'http://localhost:8080/download/' + response.data[i].playerImageFileName;
+        console.log(uri);
+        let data;
+
+        fetch(uri).then(response => {
+        response.blob().then(blobResponse => {
+        data = blobResponse;
+       
+        const img = document.createElement('img')
+        img.src = URL.createObjectURL(data);
+        img.width = 60;
+        document.getElementById('playerImages').appendChild(img);
+        //document.querySelector('body').append(img);
+            })});
+    }
+
     }); 
 }
 
@@ -221,7 +271,7 @@ function validate()
     }
 
 
-    let uri = 'https://tictac-toe-backend.herokuapp.com/validate';
+    let uri = 'http://localhost:8080/validate';
     this.axios.post(uri,body).then(response =>{ 
     //console.log(response.data);
 
@@ -339,3 +389,69 @@ function chart(data)
     chart.render();
 }
 
+
+/////////////////////////////////////////////////////////////////
+
+var loadFile = function(event) 
+{
+    var image = document.getElementById('output');
+    image.src = URL.createObjectURL(event.target.files[0]);
+};
+var loadFile2 = function(event) 
+{
+    var image = document.getElementById('output2');
+    image.src = URL.createObjectURL(event.target.files[0]);
+};
+
+
+function sendImage()
+{
+    play();
+
+    var image;
+    if(xIsNext)
+    {
+        image = document.getElementById('output');
+    }else
+    {
+        image = document.getElementById('output2');
+    }
+    const clone = image.cloneNode(true);
+    clone.width = 40;
+    document.getElementById('move2').innerHTML = "";
+    document.getElementById('move2').appendChild(clone);
+
+
+
+    const formData = new FormData();
+    
+    
+    var element = document.getElementById('image');
+    var file = element.files[0];
+    if(file == null)
+    {
+        note("Image for player 1 is not provided");
+        return;
+    }
+    formData.append('file', file);
+    element = document.getElementById('image2');
+    file = element.files[0];
+    if(file == null)
+    {
+        note("Image for player 2 is not provided");
+        return;
+    }
+    formData.append('file', file);
+
+
+
+    this.axios.post("http://localhost:8080/upload", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
+      .then((res) => {
+        console.log(res);
+      dataFetch();
+      });
+}

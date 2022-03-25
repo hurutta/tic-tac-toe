@@ -62,7 +62,7 @@ background-color:#581845;
 #historyTable
 {
   background-color: lightblue;
-  height: 500px;
+  height: 400px;
   width: 45%;
   position: absolute;
   left: 5%;
@@ -146,7 +146,7 @@ background-color:#581845;
 }
 
 /* ---------- */
-input {
+#myCheck {
       box-sizing: border-box;
       -webkit-appearance: none;
       position: relative;
@@ -159,8 +159,8 @@ input {
       background: white;
     }
 
-    input:after,
-    input:before {
+    #myCheck:after,
+    #myCheck:before {
       box-sizing: border-box;
       position: absolute;
       left: 5px;
@@ -175,14 +175,14 @@ input {
       transition: all 0.3s ease-out;
     }
 
-    input:before {
+    #myCheck:before {
       content: "❌";
       color: #d93816;
       border-color: #ff6645;
       background: #ffddcc;
     }
 
-    input:after {
+    #myCheck:after {
       left: auto;
       right: 5px;
       content: "⭕";
@@ -192,11 +192,11 @@ input {
       opacity: 0.4;
     }
 
-    input:checked:after {
+    #myCheck:checked:after {
       opacity: 1;
     }
 
-    input:checked:before {
+    #myCheck:checked:before {
       opacity: 0.4;
     }
 /* --------------------------------------------------- */
@@ -281,8 +281,8 @@ input {
 
 .button-49,
 .button-49:after {
-  width: 150px;
-  height: 76px;
+  width: 100px;
+  height: 56px;
   line-height: 78px;
   font-size: 20px;
   font-family: 'Bebas Neue', sans-serif;
@@ -403,3 +403,4 @@ h1
   font-family: 'Press Start 2P', cursive;
   font-size: 35px;
 }
+

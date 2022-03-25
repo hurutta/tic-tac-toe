@@ -76,13 +76,21 @@ body {font-family: "Lato", sans-serif}
             <button onclick="play(12)" class="button-49">12 x 12</button>
             </div>
 
+            <input type="file" name="picture" accept="image/*" id="image" onchange="loadFile(event)">
+            <input type="file" name="picture" accept="image/*" id="image2" onchange="loadFile2(event)">
+            <br>
+            <button onclick="sendImage()" class="button-49">READY</button>
 
-            <br><br>
+            
+
+            
                     <div class="w3-container w3-light-grey">
+            <img id="output" width="85" style="position: absolute;left: 10%;" />
+            <img id="output2" width="85" style="position: absolute;right: 10%" />
                     <h3 style="text-shadow:2px 1px 0 #444" id="n_x_n">5 x 5</h3>
                     <h3 style="text-shadow:2px 1px 0 #444" id="tp">❌</h3>
                     </div>
-            <br>
+            
             <a href="#game" class="w3-button w3-black w3-xlarge w3-wide w3-button w3-round-large">PLAY</a>
 
 
@@ -99,9 +107,10 @@ body {font-family: "Lato", sans-serif}
 
     <!-- Game section -->
     <div class="w3-content w3-center w3-padding-64" style="max-width:100%;" id="game">
-        <h1 id="game_status">Game Start</h1>
-        
-        
+        <h3 id="move" style="position: absolute;right: 10%">Current move ❌ by</h3>
+        <h3 id="move2" style="position: absolute;right: 5%"></h3>
+        <h1 id="game_status"style="position: absolute;left: 0">Game Start</h1>
+        <h1>_</h1>
             <div id="gameblock">
             
             <div class="game">
@@ -135,15 +144,16 @@ body {font-family: "Lato", sans-serif}
         <div class="w3-container w3-content w3-padding-64" style="max-width:800px">
 
         <h1 align="center">GAME HISTORY</h1>
+        <marquee id="playerImages" align="center"></marquee>
         <div id="historyTable">
             <table class="w3-table-all w3-centered"></table>    
         </div>
 
         <div id="history3">
-            <div id="chartContainer" style="height: 200px; width: 100%;"></div>
+            <div id="chartContainer" style="height: 150px; width: 100%;"></div>
         </div>
         <div id="history2">
-            <div id="chartContainer2" style="height: 200px; width: 100%;"></div>
+            <div id="chartContainer2" style="height: 150px; width: 100%;"></div>
         </div>
             <button onclick="dataFetch()"  id="update">Update data</button>
         </div>
